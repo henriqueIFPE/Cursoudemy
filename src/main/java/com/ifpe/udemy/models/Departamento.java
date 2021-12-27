@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "DEPARTAMENTOS")
 public class Departamento extends AbstractEntity<Long>{
@@ -26,6 +27,17 @@ public class Departamento extends AbstractEntity<Long>{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public List<Cargo> getCargos() {
+		return cargos;
+	}
+
+	public void setCargos(List<Cargo> cargos) {
+		this.cargos = cargos;
+	}
+	
+
 	
 	
 }
+

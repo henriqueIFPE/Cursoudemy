@@ -1,11 +1,15 @@
 package com.ifpe.udemy.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "CARGOS")
 public class Cargo extends AbstractEntity<Long> {
@@ -16,6 +20,9 @@ public class Cargo extends AbstractEntity<Long> {
 	@ManyToOne
 	@JoinColumn(name = "id_departamento_fk")
 	private Departamento departamento;
+	
+	@OneToMany(mappedBy = "cargo")
+	private List<Funcionario> funcionarios;
 
 	public String getNome() {
 		return nome;
@@ -31,6 +38,14 @@ public class Cargo extends AbstractEntity<Long> {
 
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
 	}
 	
 	
